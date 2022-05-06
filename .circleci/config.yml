@@ -80,7 +80,7 @@ jobs:
 
           # If we are on the main branch, run all of the workflows
           if [ "$CIRCLE_BRANCH" == "main" ]; then
-            if [ "<< pipeline.paramters.integration-type >>" != "*" ]; then
+            if [ "<< pipeline.parameters.integration-type >>" != "*" ]; then
               ls -d $PWD/.circleci/workflows/openlineage-integration-<< pipeline.parameters.integration-type >>.yml > workflow_files.txt
             else
               ls -d $PWD/.circleci/workflows/* > workflow_files.txt
