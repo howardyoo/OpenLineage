@@ -7,6 +7,25 @@ setup: true
 orbs:
   continuation: circleci/continuation@0.2.0
 
+# parameters to control
+# running a specific integration only (e.g. airflow, spark)
+# additional things like version
+parameters:
+  integration-type:
+    type: string
+    default: "*"
+  integration-version:
+    type: string
+    default: "default"
+
+commands:
+  print:
+    paramters:
+      message:
+        type: string
+    steps:
+      - run: echo << parameters.message >>
+
 jobs:
   # Determine the modules that have changed and trigger a series of workflow tasks as necessary.
   # We merge multiple workflows from files in the workflows subdirectory based on the changed
@@ -61,7 +80,11 @@ jobs:
 
           # If we are on the main branch, run all of the workflows
           if [ "$CIRCLE_BRANCH" == "main" ]; then
-            ls -d $PWD/.circleci/workflows/* > workflow_files.txt
+            if [ "<< pipeline.paramters.integration-type >>" != "*" ]; then
+              ls -d $PWD/.circleci/workflows/openlineage-integration-<< pipeline.parameters.integration-type >>.yml > workflow_files.txt
+            else
+              ls -d $PWD/.circleci/workflows/* > workflow_files.txt
+            fi
           else
             # Changes to the spec require all workflows to run
             check_change spec "*"
@@ -78,6 +101,11 @@ jobs:
           fi
           touch workflow_files.txt
           FILES=$(sort workflow_files.txt | uniq | tr "\n" " ")
+          
+          # I want to print out the content of the workflow_files.txt
+          echo '---- workflow_files.txt ----'
+          cat workflow_files.txt
+          echo '----------------------------'
             
           # If no changes, generate a no-op build
           if [ "$FILES" == "" ]; then
