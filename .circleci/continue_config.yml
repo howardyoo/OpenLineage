@@ -63,7 +63,7 @@ commands:
                   "text": 
                   {
                     "type": "mrkdwn",
-                    "text": "<< parameters.message >>",
+                    "text": "<< parameters.message >>"
                   }
                 }
               ]
