@@ -6,6 +6,7 @@ setup: true
 # the path of an updated fileset
 orbs:
   continuation: circleci/continuation@0.2.0
+  slack: circleci/slack@4.1
 
 # parameters to control
 # running a specific integration only (e.g. airflow, spark)

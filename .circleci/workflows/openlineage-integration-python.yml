@@ -13,3 +13,8 @@ workflows:
           requires:
             - build-client-python
             - unit-test-client-python
+      - slack-notify:
+          context: howard-slack
+          message: "TEST TEST"
+          requires:
+            - workflow_complete

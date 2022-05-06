@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   gcp-cli: circleci/gcp-cli@2.2.0
+  slack: circleci/slack@4.1
 
 checkout_project_root: &checkout_project_root
   # Override checkout path to project root (see: https://circleci.com/docs/2.0/configuration-reference/#checkout)
@@ -43,6 +44,34 @@ commands:
       - run: (cd ~/openlineage/integration/common && pip install . --user)
 
 jobs:
+  slack-notify:
+    parameters:
+      message:
+        type: string
+        default: ""
+      channel:
+        type: string
+        default: "C03EBJD4KUJ"
+    steps:
+      - slack/notify:
+          channel: "<< parameters.channel >>"
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "plain_text",
+                      "text": "<< parameters.message >>",
+                      "emoji": true
+                    }
+                  ]
+                }
+              ]
+            }
+          event: always
+  
   unit-test-client-python:
     working_directory: ~/openlineage/client/python
     docker:
