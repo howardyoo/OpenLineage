@@ -54,23 +54,23 @@ jobs:
         default: "C03EBJD4KUJ"
     steps:
       - slack/notify:
-          channel: "<< parameters.channel >>"
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text": "<< parameters.message >>",
-                      "emoji": true
-                    }
-                  ]
-                }
-              ]
-            }
-          event: always
+        channel: "<< parameters.channel >>"
+        custom: |
+          {
+            "blocks": [
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "plain_text",
+                    "text": "<< parameters.message >>",
+                    "emoji": true
+                  }
+                ]
+              }
+            ]
+          }
+        event: always
   
   unit-test-client-python:
     working_directory: ~/openlineage/client/python
