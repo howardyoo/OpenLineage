@@ -77,7 +77,7 @@ jobs:
     executor:
       name: node/default
     steps:
-      - slack-notify
+      - slack-notify:
           message: "TEST FINISHED"
 
   unit-test-client-python:
