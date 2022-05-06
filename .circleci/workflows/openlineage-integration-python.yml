@@ -1,6 +1,7 @@
 workflows:
   openlineage-integration-python:
     jobs:
+      - notify-finish
       - unit-test-client-python
       - build-client-python:
           filters:
