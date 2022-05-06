@@ -11,6 +11,15 @@ checkout_project_root: &checkout_project_root
 install_python_client: &install_python_client
   run: (cd ~/openlineage/client/python && pip install . --user)
 
+# added param
+parameters:
+  integration-type:
+    type: string
+    default: "*"
+  integration-version:
+    type: string
+    default: "default"
+
 param_build_tag: &param_build_tag
   parameters:
     build_tag:
