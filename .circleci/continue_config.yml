@@ -60,13 +60,11 @@ commands:
               "blocks": [
                 {
                   "type": "section",
-                  "fields": [
-                    {
-                      "type": "mrkdwn",
-                      "text": "<< parameters.message >>",
-                      "emoji": true
-                    }
-                  ]
+                  "text": 
+                  {
+                    "type": "mrkdwn",
+                    "text": "<< parameters.message >>",
+                  }
                 }
               ]
             }
@@ -78,7 +76,7 @@ jobs:
       name: node/default
     steps:
       - slack-notify:
-          message: ":checkered_flag: *FINISHED* $CIRCLE_BUILD_URL for repository $CIRCLE_REPOSITORY_URL, with branch: $CIRCLE_BRANCH"
+          message: ":checkered_flag: *FINISHED* \\n> $CIRCLE_BUILD_URL for repository $CIRCLE_REPOSITORY_URL, with branch: $CIRCLE_BRANCH"
       - slack/notify:
           channel: C03EBJD4KUJ
           event: fail
