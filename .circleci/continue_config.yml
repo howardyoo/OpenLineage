@@ -49,7 +49,7 @@ commands:
         type: string
         default: ""
       channel:
-        type: stirng
+        type: string
         default: "C03EBJD4KUJ"
     steps:
       - slack/notify:
