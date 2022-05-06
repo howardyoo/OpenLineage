@@ -79,8 +79,10 @@ jobs:
     steps:
       - slack-notify:
           message: ":checkered_flag: *FINISHED*\\n>$CIRCLE_BUILD_URL , for repository $CIRCLE_REPOSITORY_URL, with branch: $CIRCLE_BRANCH"
-      - slack/status:
-          fail_only: 'true'
+      - slack/notify:
+          channel: C03EBJD4KUJ
+          event: fail
+          template: basic_fail_1 
 
   unit-test-client-python:
     working_directory: ~/openlineage/client/python
