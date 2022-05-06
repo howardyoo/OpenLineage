@@ -78,7 +78,7 @@ jobs:
       name: node/default
     steps:
       - slack-notify:
-          message: ":checkered_flag: << pipeline.id >> << pipeline.number >> << pipeline.project.git_url >> for branch << pipeline.git.branch >> FINISHED"
+          message: ":checkered_flag: $CIRCLE_BUILD_URL FINISHED, for repository $CIRCLE_REPOSITORY_URL, with branch: $CIRCLE_BRANCH"
 
   unit-test-client-python:
     working_directory: ~/openlineage/client/python
