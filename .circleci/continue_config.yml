@@ -73,7 +73,6 @@ commands:
 
 jobs:
   notify-finish:
-    context: howard-slack
     executor:
       name: node/default
     steps:
