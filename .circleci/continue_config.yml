@@ -78,7 +78,7 @@ jobs:
       name: node/default
     steps:
       - slack-notify:
-          message: "TEST FINISHED"
+          message: ":checkered_flag: << pipeline.id >> << pipeline.number >> << pipeline.project.git_url >> for branch << pipeline.git.branch >> with parameter << pipieline.parameters.integration-type >> : << pipeline.parameters.integration-version >> FINISHED"
 
   unit-test-client-python:
     working_directory: ~/openlineage/client/python
