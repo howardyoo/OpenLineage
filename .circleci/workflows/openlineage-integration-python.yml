@@ -4,7 +4,7 @@ workflows:
       - notify-finish:
           context: howard-slack
           requires:
-            - workflow-complete
+            - workflow_complete
       - unit-test-client-python
       - build-client-python:
           filters:
