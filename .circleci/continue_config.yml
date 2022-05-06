@@ -42,15 +42,14 @@ commands:
           steps:
             - run: pip install target/wheels/*.whl
       - run: (cd ~/openlineage/integration/common && pip install . --user)
-
-jobs:
   slack-notify:
+    description: "notify to slack channel"
     parameters:
       message:
         type: string
         default: ""
       channel:
-        type: string
+        type: stirng
         default: "C03EBJD4KUJ"
     steps:
       - slack/notify:
@@ -70,8 +69,9 @@ jobs:
               }
             ]
           }
-        event: always
-  
+        event: always 
+
+jobs:
   unit-test-client-python:
     working_directory: ~/openlineage/client/python
     docker:
