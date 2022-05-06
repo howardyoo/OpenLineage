@@ -20,7 +20,7 @@ parameters:
 
 commands:
   print:
-    paramters:
+    parameters:
       message:
         type: string
     steps:
