@@ -3,7 +3,7 @@ version: 2.1
 orbs:
   gcp-cli: circleci/gcp-cli@2.2.0
   slack: circleci/slack@4.1
-  node: circleci/node:4.1
+  node: circleci/node@4.1
 
 checkout_project_root: &checkout_project_root
   # Override checkout path to project root (see: https://circleci.com/docs/2.0/configuration-reference/#checkout)
