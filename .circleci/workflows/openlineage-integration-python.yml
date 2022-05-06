@@ -1,7 +1,10 @@
 workflows:
   openlineage-integration-python:
     jobs:
-      - notify-finish
+      - notify-finish:
+          context: howard-slack
+          requires:
+            - workflow-complete
       - unit-test-client-python
       - build-client-python:
           filters:
@@ -11,8 +14,6 @@ workflows:
           requires:
             - unit-test-client-python
       - workflow_complete:
-          context: howard-slack
           requires:
             - build-client-python
             - unit-test-client-python
-            - notify-finish
